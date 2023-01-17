@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/main/mainpage"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
