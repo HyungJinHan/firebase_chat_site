@@ -3,26 +3,28 @@ import { doc, serverTimestamp, setDoc } from '@firebase/firestore';
 import * as React from 'react';
 import styled from 'styled-components';
 import { auth, db } from '../../../firebase';
-import { Button, Form, Input, InputRef } from 'antd';
-import Link from 'next/link';
+import { Input } from 'antd';
+import type { InputRef } from 'antd';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const SignUpDiv = styled.div`
-  width: 500px;
+  width: 50%;
   text-align: center;
   display: inline-block;
   padding-top: 50px;
+  font-family: 'GmarketSansMedium';
+  margin-top: 5rem;
 `
 
 const ErrorMsg = styled.p`
   color: red;
   font-weight: bolder;
+  font-family: 'GmarketSansMedium';
+  padding-top: .625rem;
 `
 
-export interface IAppProps {
-}
-
-export default function App(props: IAppProps) {
+export default function App() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [name, setName] = React.useState('');
@@ -92,80 +94,84 @@ export default function App(props: IAppProps) {
 
   return (
     <SignUpDiv>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
-        autoComplete="off"
+      <h1 className='sign_title'>
+        회원가입을 해주세요!
+      </h1>
+      <Input
+        placeholder='사용할 닉네임을 입력해주세요.'
+        className='sign_input'
+        ref={nameRef}
+        onKeyPress={
+          (e) => {
+            if (e.key === "Enter") {
+              register();
+            }
+          }
+        }
+        onChange={
+          (e) => {
+            setName(e.target.value);
+          }
+        }
+      />
+      <Input
+        placeholder='이메일을 입력해주세요.'
+        className='sign_input'
+        ref={emailRef}
+        onKeyPress={
+          (e) => {
+            if (e.key === "Enter") {
+              register();
+            }
+          }
+        }
+        onChange={
+          (e) => {
+            setEmail(e.target.value);
+          }
+        }
+      />
+      <Input.Password
+        placeholder='비밀번호를 입력해주세요.'
+        className='sign_input'
+        ref={passwordRef}
+        onKeyPress={
+          (e) => {
+            if (e.key === "Enter") {
+              register();
+            }
+          }
+        }
+        onChange={
+          (e) => {
+            setPassword(e.target.value);
+          }
+        }
+      />
+      <button
+        className='sign_button'
+        onClick={
+          () => {
+            register();
+          }
+        }
       >
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <h1>회원가입</h1>
-        </Form.Item>
-
-        <Form.Item
-          label="닉네임"
-          name="name"
-          rules={[{ required: true, message: '닉네임을 입력해주세요!' }]}
-        >
-          <Input
-            ref={nameRef}
-            onChange={
-              (e) => {
-                setName(e.target.value);
-              }
-            }
-          />
-        </Form.Item>
-
-        <Form.Item
-          label="이메일"
-          name="email"
-          rules={[{ required: true, message: '이메일을 입력해주세요!' }]}
-        >
-          <Input
-            ref={emailRef}
-            onChange={
-              (e) => {
-                setEmail(e.target.value);
-              }
-            }
-          />
-        </Form.Item>
-
-        <Form.Item
-          label="비밀번호"
-          name="password"
-          rules={[{ required: true, message: '비밀번호를 입력해주세요!' }]}
-        >
-          <Input.Password
-            ref={passwordRef}
-            onChange={
-              (e) => {
-                setPassword(e.target.value);
-              }
-            }
-          />
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button
-            type="primary"
-            onClick={
-              () => {
-                register();
-              }
-            }
-          >
-            회원가입하기
-          </Button>
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <ErrorMsg>
-            <u>{errorMsg}</u>
-          </ErrorMsg>
-        </Form.Item>
-      </Form>
+        회원가입하기
+      </button>
+      <br />
+      <span
+        className='sign_link'
+        onClick={
+          () => {
+            router.back();
+          }
+        }
+      >
+        로그인하러 가기
+      </span>
+      <ErrorMsg>
+        <u>{errorMsg}</u>
+      </ErrorMsg>
     </SignUpDiv>
   );
 }

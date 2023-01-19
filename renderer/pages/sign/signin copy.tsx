@@ -1,23 +1,33 @@
 import * as React from 'react';
 import {
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithRedirect
 } from 'firebase/auth';
 import {
+  addDoc,
+  collection,
   doc,
   serverTimestamp,
   setDoc
 } from 'firebase/firestore';
 import { auth, db } from "../../../firebase";
 import styled from 'styled-components';
-import { Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import type { InputRef } from 'antd';
 import Link from 'next/link';
+
+const SignInDiv = styled.div`
+  width: 500px;
+  text-align: center;
+  display: inline-block;
+  padding-top: 50px;
+`
 
 const ErrorMsg = styled.p`
   color: red;
   font-weight: bolder;
   font-family: 'GmarketSansMedium';
-  padding-top: .625rem;
 `
 
 export interface IAppProps {
@@ -88,62 +98,84 @@ export default function SignIn(props: IAppProps) {
   }
 
   return (
-    <>
-      <h1 className='sign_title'>
-        로그인을 해주세요!
-      </h1>
-      <Input
-        placeholder='이메일을 입력해주세요.'
-        className='sign_input'
-        ref={emailRef}
-        onKeyPress={
-          (e) => {
-            if (e.key === "Enter") {
-              errorCheck();
-            }
-          }
-        }
-        onChange={
-          (e) => {
-            setEmail(e.target.value);
-          }
-        }
-      />
-
-      <Input.Password
-        placeholder='비밀번호를 입력해주세요.'
-        className='sign_input'
-        ref={passwordRef}
-        onKeyPress={
-          (e) => {
-            if (e.key === "Enter") {
-              errorCheck();
-            }
-          }
-        }
-        onChange={
-          (e) => {
-            setPassword(e.target.value);
-          }
-        }
-      />
-      <button
-        className='sign_button'
-        onClick={
-          () => {
-            errorCheck();
-          }
-        }
+    <SignInDiv>
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        initialValues={{ remember: true }}
+        autoComplete="off"
       >
-        로그인
-      </button>
-      <br />
-      <Link href='/sign/signup'>
-        <span className='sign_link'>처음이신가요?</span>
-      </Link>
-      <ErrorMsg>
-        <u>{errorMsg}</u>
-      </ErrorMsg>
-    </>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <h1>로그인</h1>
+        </Form.Item>
+        <Form.Item
+          label="이메일"
+          name="email"
+          rules={[{ required: true, message: '이메일을 입력해주세요' }]}
+        >
+          <Input
+            ref={emailRef}
+            onChange={
+              (e) => {
+                setEmail(e.target.value);
+              }
+            }
+          />
+        </Form.Item>
+
+        <Form.Item
+          label="비밀번호"
+          name="password"
+          rules={[{ required: true, message: '비밀번호를 입력해주세요' }]}
+        >
+          <Input.Password
+            ref={passwordRef}
+            onChange={
+              (e) => {
+                setPassword(e.target.value);
+              }
+            }
+          />
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button
+            onClick={
+              () => {
+                errorCheck();
+              }
+            }
+            type="primary"
+          >
+            로그인
+          </Button>
+
+          {/* &nbsp;
+          &nbsp;
+
+          <Button
+            onClick={
+              () => {
+                googleSignIn();
+              }
+            }
+            type="primary"
+          >
+            구글로 로그인하기
+          </Button> */}
+
+          <br />
+          <br />
+
+          <Link href='/sign/signup'><a>처음이신가요?</a></Link>
+        </Form.Item>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <ErrorMsg>
+            <u>{errorMsg}</u>
+          </ErrorMsg>
+        </Form.Item>
+      </Form>
+    </SignInDiv>
   );
 }

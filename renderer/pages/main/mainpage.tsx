@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import styled from 'styled-components';
@@ -10,53 +11,55 @@ import Example from '../privatechat/example';
 
 const MainDiv = styled.div`
   display: flex;
-  height: 100vh;
+  padding-top: 50px;
+  width: 80%;
 `
 
-const RoomList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`
-
-export interface IAppProps {
-}
-
-export function MainPage(props: IAppProps) {
+export function MainPage() {
   const [user] = useAuthState(auth);
   console.log(user);
 
-  return (
-    <>
+  const router = useRouter();
+  const url = router.pathname;
+  console.log(url);
+
+  if (url === '/home') {
+    return (
       <MainDiv>
-        <div className='MainPage_UserList'>
-          <h2>현재 접속 중인 유저</h2>
-          <br />
-          <h3>1 : 1 채팅을 시작해보세요!</h3>
-          <br />
-          <CurrentUserList />
-        </div>
-        <div className='MainPage_UserList'>
-          <h2>서비스에 가입한 유저</h2>
-          <br />
-          <h3>1 : 1 채팅을 시작해보세요!</h3>
-          <br />
-          <UserList />
-        </div>
-        <div className='MainPage_UserList'>
-          <h2>단체 채팅 목록</h2>
-          <br />
-          <h3>채팅 방에 참여해보세요!</h3>
-          <br />
-          <RoomList>
-            <ChatRoomList />
-          </RoomList>
-        </div>
-        <div className='MainPage_UserList'>
-          <h2>예제</h2>
-          <Example />
-        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        this is chatting app
       </MainDiv>
-    </>
-  );
+    );
+  }
+
+  if (url === '/list/userlist') {
+    return (
+      <div className='layout_mainpage'>
+        <MainDiv>
+          <UserList />
+        </MainDiv>
+      </div>
+    );
+  }
+
+  if (url === '/chatroom/chatroomlist') {
+    return (
+      <div className='layout_mainpage'>
+        <MainDiv>
+          <ChatRoomList />
+        </MainDiv>
+      </div>
+    );
+  }
 }

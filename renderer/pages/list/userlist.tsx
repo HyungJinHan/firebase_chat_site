@@ -1,16 +1,18 @@
 import { collection, getDocs } from '@firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { db } from '../../../firebase';
 import profileImage from '../../public/images/profileImage.svg';
 
-export interface IAppProps {
-}
-
-export default function UserList(props: IAppProps) {
+export default function UserList() {
   const [user, setUser] = React.useState([]);
   let list = [];
+
+  const router = useRouter();
+  const url = router.pathname;
+  console.log(url);
 
   React.useEffect(() => {
     getDocs(collection(db, 'userInfo'))
@@ -29,6 +31,10 @@ export default function UserList(props: IAppProps) {
 
   return (
     <div>
+      <h2>서비스에 가입한 유저</h2>
+      <br />
+      <h3>1 : 1 채팅을 시작해보세요!</h3>
+      <br />
       {user?.map((data) => (
         <Link
           href={{

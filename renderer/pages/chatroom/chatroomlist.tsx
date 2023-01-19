@@ -3,33 +3,32 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { chatRoom } from './Room';
 
-const RoomDiv = styled.div`
-  display: flex;
-  flex: 1 1 calc(50% - 4px);
-  justify-content: center;
-  align-items: center;
-  width: 50%;
+const RoomListDiv = styled.div`
+  text-align: center;
+  display: inline-block;
 `
 
-export interface IAppProps {
-}
-
-export default function ChatRoomList(props: IAppProps) {
+export default function ChatRoomList() {
   return (
-    <RoomDiv>
-      {chatRoom.map((room) => (
-        <div key={room.id}>
-          <Link
-            href={{
-              pathname: `/chatroom/chatroom`,
-              query: room.id,
-            }}
-            as={`/chatroom/chatroom/${room.id}`}
-          >
-            <a>{room.title}</a>
-          </Link>
+    <RoomListDiv>
+      <div className='chatroomlist_div'>
+        <h2>관심사가 맞는 유저들과 대화를 해보세요!</h2>
+        <br />
+        <br />
+        <div className='chatroomlist_list'>
+          {chatRoom.map((room) => (
+            <Link
+              href={{
+                pathname: `/chatroom/chatroom`,
+                query: room.id,
+              }}
+              as={`/chatroom/chatroom/${room.id}`}
+            >
+              <p className='chatroomlist_link'>{room.title}</p>
+            </Link>
+          ))}
         </div>
-      ))}
-    </RoomDiv>
+      </div>
+    </RoomListDiv>
   );
 }

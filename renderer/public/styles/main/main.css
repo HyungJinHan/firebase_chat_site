@@ -2,6 +2,29 @@
   padding: 30px;
   text-align: center;
   margin-top: 40px;
-  color: #7cc5d9;
+  color: #3DA2FF;
+  /* width: 50%; */
+}
+
+.chatroomlist_div {
+  text-align: center;
+  margin: auto;
+  margin-top: 220px;
+  color: #3DA2FF;
+  width: 60%;
+}
+
+.chatroomlist_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.chatroomlist_link {
   width: 50%;
+  font-size: larger;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 80px;
 }
