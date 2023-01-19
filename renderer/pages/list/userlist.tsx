@@ -3,8 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import styled from 'styled-components';
 import { db } from '../../../firebase';
 import profileImage from '../../public/images/profileImage.svg';
+
+const UserListDiv = styled.div`
+  text-align: center;
+  display: inline-block;
+`
 
 export default function UserList() {
   const [user, setUser] = React.useState([]);
@@ -30,36 +36,44 @@ export default function UserList() {
   }, [])
 
   return (
-    <div>
-      <h2>서비스에 가입한 유저</h2>
-      <br />
-      <h3>1 : 1 채팅을 시작해보세요!</h3>
-      <br />
-      {user?.map((data) => (
-        <Link
-          href={{
-            pathname: `/privatechat/privatechatroom`,
-            query: data.uid,
-          }}
-          as={`/privatechat/privatechatroom/${data.uid}`}
-        >
-          <div>
-            {
-              !data.avatar ?
-                <Image
-                  src={profileImage}
-                  alt="user avatar"
-                />
-                :
-                <Image
-                  src={data.avatar}
-                  alt="user avatar"
-                />
-            }
-            <p>{data.name}</p>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <UserListDiv>
+      <div className='userlist_div'>
+        <h2>지금까지 가입한 유저에요!</h2>
+        <br />
+        <div className='userlist_list'>
+          {user?.map((data) => (
+            <>
+              <Link
+                href={{
+                  pathname: `/privatechat/privatechatroom`,
+                  query: data.uid,
+                }}
+                as={`/privatechat/privatechatroom/${data.uid}`}
+              >
+                <>
+                  <div className='userlist_article'>
+                    {
+                      !data.avatar ?
+                        <Image
+                          src={profileImage}
+                          alt="user avatar"
+                        />
+                        :
+                        <Image
+                          src={data.avatar}
+                          alt="user avatar"
+                        />
+                    }
+                    <p>
+                      {data.name}
+                    </p>
+                  </div>
+                </>
+              </Link>
+            </>
+          ))}
+        </div>
+      </div>
+    </UserListDiv>
   );
 }

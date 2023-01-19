@@ -1,7 +1,13 @@
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import styled from 'styled-components';
 import ChatBox from '../chat/chatbox';
 import { chatRoom } from './Room';
+
+const ChatRoomDiv = styled.div`
+  text-align: center;
+  /* display: inline-block; */
+`
 
 export default function ChatRoom() {
   const router = useRouter();
@@ -16,18 +22,14 @@ export default function ChatRoom() {
   )
 
   return (
-    <div>
-      <h2>{room.title}</h2>
-      <input
-        type="button"
-        value='뒤로 가기'
-        onClick={
-          () => {
-            router.back();
-          }
-        }
-      />
-      <ChatBox roomId={roomId} />
-    </div>
+    <>
+      <ChatRoomDiv>
+        <div className='chatroom_div'>
+          <div className='chatroom_article'>
+            <ChatBox roomId={roomId} />
+          </div>
+        </div>
+      </ChatRoomDiv>
+    </>
   );
 }

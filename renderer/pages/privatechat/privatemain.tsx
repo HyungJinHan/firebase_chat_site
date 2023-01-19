@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Example from './example';
+import PrivateChat from './privatechat';
 
-export function PrivateMain() {
+export default function PrivateMain() {
   return (
     <div>
-      <Example />
+      <PrivateChat />
     </div>
   );
 }

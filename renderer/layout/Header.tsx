@@ -19,13 +19,26 @@ export default function Header() {
 
   const router = useRouter();
   const url = router.pathname;
+  const param = router.asPath;
 
   let title = 'HyungJin Han의 채팅앱';
 
   if (url === '/list/userlist') {
-    title = '유저 리스트 보기';
+    title = '유저 리스트';
   } else if (url === '/chatroom/chatroomlist') {
-    title = '채팅방 리스트 보기';
+    title = '채팅방 리스트';
+  } else if (url === '/privatechat/privatemain') {
+    title = '1대1 채팅하기';
+  } else if (param === '/chatroom/chatroom/study') {
+    title = '📚 학업 스트레스 수다방 💯';
+  } else if (param === '/chatroom/chatroom/job') {
+    title = '📌 취업 정보 공유 채팅방 📋';
+  } else if (param === '/chatroom/chatroom/food') {
+    title = '🍰 내가 알아낸 맛집 추천 🍖';
+  } else if (param === '/chatroom/chatroom/hobby') {
+    title = '⚽ 취미 이모저모 🎮';
+  } else if (param === '/chatroom/chatroom/music') {
+    title = '🎵 혹시 이 음악 아시나요? 🎻';
   }
 
   const signOut = async () => {
@@ -35,12 +48,23 @@ export default function Header() {
       })
 
     await auth.signOut();
+    await router.replace('/home');
   };
 
   return (
     <nav>
       <div className="layout_header">
         <TitleDiv>
+          <button
+            onClick={
+              () => {
+                router.back();
+              }
+            }
+            className="signout_button"
+          >
+            뒤로가기
+          </button>
           <h1>{title}</h1>
           <button
             onClick={
@@ -63,13 +87,9 @@ export default function Header() {
             <span className='layout_link'>채팅방 리스트</span>
           </Link>
 
-          <Link href='/list/userlist'>
+          <Link href='/privatechat/privatemain'>
             <span className='layout_link'>1대1 채팅하기</span>
           </Link>
-
-          {/* <Link href='/list/userlist'>
-            <span className='layout_link'>현재 유저 리스트</span>
-          </Link> */}
         </TitleDiv>
       </div>
     </nav>

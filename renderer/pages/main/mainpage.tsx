@@ -7,7 +7,8 @@ import { auth } from '../../../firebase';
 import ChatRoomList from '../chatroom/chatroomlist';
 import CurrentUserList from '../list/currentuserlist';
 import UserList from '../list/userlist';
-import Example from '../privatechat/example';
+import Example from '../privatechat/privatechat';
+import PrivateMain from '../privatechat/privatemain';
 
 const MainDiv = styled.div`
   display: flex;
@@ -58,6 +59,16 @@ export function MainPage() {
       <div className='layout_mainpage'>
         <MainDiv>
           <ChatRoomList />
+        </MainDiv>
+      </div>
+    );
+  }
+
+  if (url === '/privatechat/privatemain') {
+    return (
+      <div className='layout_mainpage'>
+        <MainDiv>
+          <PrivateMain />
         </MainDiv>
       </div>
     );

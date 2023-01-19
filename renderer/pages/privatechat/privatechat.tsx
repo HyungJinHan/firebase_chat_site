@@ -2,10 +2,17 @@ import { Button } from 'antd';
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import styled from 'styled-components';
 import { auth, db } from '../../../firebase';
 import UsersComponent from './userscomponent';
+import { IoIosSend } from 'react-icons/io';
 
-export default function Example() {
+const PrivateUserDiv = styled.div`
+  text-align: center;
+  display: flex;
+`
+
+export default function PrivateChat() {
   const [users, setUsers] = React.useState([]);
 
   const [receiverData, setReceiverData] = React.useState(null);
@@ -97,40 +104,23 @@ export default function Example() {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          padding: 5,
-          justifyContent: "space-between",
-        }}
-      >
-        <h4 style={{ margin: 0 }}>{user?.displayName} </h4>
-        <Button
-          color="secondary"
-          onClick={() => {
-            auth.signOut();
-            router.replace('/home');
-          }}
-        >
-          Logout
-        </Button>
-      </div>
-      All users
-      <div style={{ overflowY: "scroll" }}>
-        <UsersComponent
-          users={users}
-          setReceiverData={setReceiverData}
-          router={router}
-          currentUserId={user?.uid}
-        />
-      </div>
+    <>
+      <PrivateUserDiv>
+        <div className='privatechat_div'>
+          <UsersComponent
+            users={users}
+            setReceiverData={setReceiverData}
+            router={router}
+            currentUserId={user?.uid}
+          />
+        </div>
+      </PrivateUserDiv>
 
       <h4 style={{ margin: 2, padding: 10 }}>
         {receiverData ? receiverData.username : user?.displayName}{" "}
       </h4>
 
-      <div>
+      <div className='privatechat_div'>
         {/* messages area */}
 
         {allMessages &&
@@ -170,58 +160,21 @@ export default function Example() {
           })}
       </div>
 
-      <div style={{ width: "100%", display: "flex", flex: 0.08 }}>
+      <div className="send-message">
         <input
           value={chatMessage}
           onChange={(e) => setChatMessage(e.target.value)}
-          style={input}
+          id="messageInput"
+          name="messageInput"
           type="text"
-          placeholder="Type message..."
+          className="form-input__input"
+          placeholder="메세지를 입력하세요!"
         />
-        <Button onClick={sendMessage}>
+        <button onClick={sendMessage}>
+          {/* <IoIosSend /> */}
           보내기
-        </Button>
+        </button>
       </div>
-    </div>
+    </>
   );
 }
-
-const root = {
-  display: "flex",
-  flexDirection: "row",
-  flex: 1,
-  width: "100%",
-};
-
-const left = {
-  display: "flex",
-  flex: 0.2,
-  height: "95vh",
-  margin: 10,
-  flexDirection: "column",
-};
-
-const right = {
-  display: "flex",
-  flex: 0.8,
-  height: "95vh",
-  margin: 10,
-  flexDirection: "column",
-};
-
-const input = {
-  flex: 1,
-  outline: "none",
-  borderRadius: 5,
-  border: "none",
-};
-
-const messagesDiv = {
-  backgroundColor: "#FBEEE6",
-  padding: 5,
-  display: "flex",
-  flexDirection: "column",
-  flex: 1,
-  maxHeight: 460,
-  overflowY: "scroll",
-};

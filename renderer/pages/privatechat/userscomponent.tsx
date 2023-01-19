@@ -21,7 +21,7 @@ export default function UsersComponent(props) {
   };
 
   return (
-    <div>
+    <div className='privatechat_user'>
       {props.users?.map((data) => {
         console.log(data);
 
@@ -35,10 +35,10 @@ export default function UsersComponent(props) {
               <Link
                 key={data.uid}
                 href={{
-                  pathname: `/privatechat/example`,
+                  pathname: `/privatechat/privatechat`,
                   query: data.uid,
                 }}
-                as={`/privatechat/example/${data.uid}`}
+                as={`/privatechat/privatechat/${data.uid}`}
               >
                 <div>
                   {

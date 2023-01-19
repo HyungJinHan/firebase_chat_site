@@ -3,16 +3,25 @@
   background-color: transparent;
 }
 
-/* welcome page */
-.welcome {
-  padding: 30px;
-  text-align: center;
-  margin-top: 40px;
-  color: #7cc5d9;
+.chatroom_div {
+  margin-top: 170px;
+  width: 100%;
 }
 
-.welcome :is(h2, p, img) {
-  margin-bottom: 20px;
+.chatroom_article {
+  margin: 0 auto;
+  padding-bottom: 10px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+
+.chatroom_list {
+  display: flex;
+  justify-content: space-between;
+  font-size: larger;
+  cursor: pointer;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 /* chat component */
@@ -21,28 +30,33 @@
   margin-bottom: 60px;
 }
 
+.message_maindiv {
+  padding-top: 10px;
+}
+
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
-  padding: 15px;
-  background-color: #7cc5d9;
-  color: #1c2c4c;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #0062be;
   width: max-content;
   max-width: calc(100% - 50px);
-  box-shadow: -2px 2px 1px 1px #4c768d;
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
+  color: white;
 }
 
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
-  background-color: #fff;
-  box-shadow: -2px 2px 1px 1px #88dded;
+  background-color: #3DA2FF;
+  color: white;
 }
 
 .chat-bubble_img {
-  width: 50%;
+  margin-top: 10px;
+  padding-top: 10px;
 }
 
 .chat-bubble__left {
@@ -53,14 +67,21 @@
 }
 
 .chat-bubble__left_img {
-  width: 20%;
+  padding: 0%;
+}
+
+.message_div {
+  padding-top: 20px;
+  padding-left: 20px;
+  vertical-align: middle;
+  padding-top: 35px;
 }
 
 .user-name {
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 0.9rem;
-  color: #1c2c4c;
+  color: white;
 }
 
 .user-message {
@@ -78,7 +99,7 @@
   bottom: 0px;
   width: 100%;
   padding: 20px 30px;
-  background-color: #4c768d;
+  background-color: #0062be;
   display: flex;
 }
 
@@ -107,8 +128,20 @@
   height: 40px;
   padding: 5px 10px;
   border-radius: 0 5px 5px 0;
-  color: #242443;
-  border: 1px solid #7cc5d9;
-  background-color: #7cc5d9;
+  color: white;
+  border: 1px solid #3DA2FF;
+  background-color: #3DA2FF;
   font-weight: 600;
+}
+
+.privatechat_div {
+  margin-top: 170px;
+  width: 100%;
+}
+
+.privatechat_user {
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
 }
