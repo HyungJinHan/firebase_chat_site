@@ -6,10 +6,16 @@ import styled from 'styled-components';
 import { auth, db } from '../../../firebase';
 import UsersComponent from './userscomponent';
 import { IoIosSend } from 'react-icons/io';
+import Image from 'next/image';
+import profileImage from '../../public/images/profileImage.svg';
+
+const PrivateTitleDiv = styled.div`
+  text-align: center;
+  /* display: inline-block; */
+`
 
 const PrivateUserDiv = styled.div`
-  text-align: center;
-  display: flex;
+  display: inline-block;
 `
 
 export default function PrivateChat() {
@@ -19,6 +25,8 @@ export default function PrivateChat() {
   const [chatMessage, setChatMessage] = React.useState("");
 
   const [allMessages, setAllMessages] = React.useState([]);
+
+  const scroll = React.useRef<HTMLInputElement>();
 
   const user = auth.currentUser;
 
@@ -101,10 +109,18 @@ export default function PrivateChat() {
       console.log(error);
     }
     setChatMessage("");
+    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
+      <PrivateTitleDiv>
+        <div className='chatroomlist_div'>
+          <h2>1대1 채팅을 해보세요!</h2>
+          <br />
+          <br />
+        </div>
+      </PrivateTitleDiv>
       <PrivateUserDiv>
         <div className='privatechat_div'>
           <UsersComponent
@@ -115,46 +131,43 @@ export default function PrivateChat() {
           />
         </div>
       </PrivateUserDiv>
-
+      {/* 
       <h4 style={{ margin: 2, padding: 10 }}>
         {receiverData ? receiverData.username : user?.displayName}{" "}
-      </h4>
+      </h4> */}
 
-      <div className='privatechat_div'>
-        {/* messages area */}
-
+      <div className="privatechat-wrapper">
         {allMessages &&
-          allMessages.map(({ id, messages }) => {
+          allMessages.map(({ messages }) => {
             return (
               <div
-                key={id}
-                style={{
-                  margin: 2,
-                  display: "flex",
-                  flexDirection:
-                    user?.uid == messages.messageUserId
-                      ? "row-reverse"
-                      : "row",
-                }}
+                className={`chat-bubble ${messages.messageUserId === user.uid ? "right" : ""}`}
               >
-                <span
-                  style={{
-                    backgroundColor: "#BB8FCE",
-                    padding: 6,
-                    borderTopLeftRadius:
-                      user?.uid == messages.messageUserId ? 10 : 0,
-                    borderTopRightRadius:
-                      user?.uid == messages.messageUserId ? 0 : 10,
-                    borderBottomLeftRadius: 10,
-                    borderBottomRightRadius: 10,
-                    maxWidth: 400,
-                    fontSize: 15,
-                    textAlign:
-                      user?.uid == messages.messageUserId ? "right" : "left",
-                  }}
-                >
-                  {messages.message}
-                </span>
+                <span ref={scroll}></span>
+                <div className='message_maindiv'>
+                  {
+                    !messages.avatar ?
+                      <Image
+                        className="chat-bubble_img"
+                        src={profileImage}
+                        alt="user avatar"
+                        width={'50%'}
+                        height={'50%'}
+                      />
+                      :
+                      <Image
+                        className="chat-bubble_img"
+                        src={messages.avatar}
+                        alt="user avatar"
+                        width={'50%'}
+                        height={'50%'}
+                      />
+                  }
+                  <p className='user-name'>{messages.username}</p>
+                </div>
+                <div className='message_div'>
+                  <span className="user-message">{messages.message}</span>
+                </div>
               </div>
             );
           })}

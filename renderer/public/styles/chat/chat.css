@@ -30,6 +30,12 @@
   margin-bottom: 60px;
 }
 
+.privatechat-wrapper {
+  padding: 30px;
+  padding-bottom: 80px;
+  /* margin-bottom: 100px; */
+}
+
 .message_maindiv {
   padding-top: 10px;
 }
@@ -135,8 +141,9 @@
 }
 
 .privatechat_div {
-  margin-top: 170px;
   width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .privatechat_user {
