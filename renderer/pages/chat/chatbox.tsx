@@ -9,8 +9,6 @@ export default function ChatBox(props) {
   const scroll = React.useRef<HTMLInputElement>();
   const currentMsgScroll = React.useRef<HTMLInputElement>();
 
-  console.log(props.roomId);
-
   React.useEffect(() => {
     const q = query(
       collection(db, 'chatRoom', props.roomId, "messages"),

@@ -6,7 +6,6 @@ import profileImage from '../../public/images/profileImage.svg';
 
 export default function Message(props) {
   const [user] = useAuthState(auth);
-  console.log(props.message.uid);
 
   return (
     <div className={`chat-bubble ${props.message.uid === user.uid ? "right" : ""}`}>

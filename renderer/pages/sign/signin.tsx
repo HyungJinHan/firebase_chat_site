@@ -18,6 +18,7 @@ const ErrorMsg = styled.p`
   font-weight: bolder;
   font-family: 'GmarketSansMedium';
   padding-top: .625rem;
+  text-decoration: underline;
 `
 
 export interface IAppProps {
@@ -35,7 +36,6 @@ export default function SignIn(props: IAppProps) {
     signInWithEmailAndPassword(auth, email, password)
 
       .then(() => {
-        console.log('확인용 ->', auth);
         setErrorMsg('');
       })
       .then(() => {
@@ -142,7 +142,7 @@ export default function SignIn(props: IAppProps) {
         <span className='sign_link'>처음이신가요?</span>
       </Link>
       <ErrorMsg>
-        <u>{errorMsg}</u>
+        {errorMsg}
       </ErrorMsg>
     </>
   );

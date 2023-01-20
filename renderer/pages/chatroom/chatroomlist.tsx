@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import styled from 'styled-components';
-import { chatRoom } from './Room';
+import { chatRoom } from '../../Room';
 
 const RoomListDiv = styled.div`
   text-align: center;
@@ -13,7 +13,6 @@ export default function ChatRoomList() {
     <RoomListDiv>
       <div className='chatroomlist_div'>
         <h2>관심사가 맞는 유저들과 대화를 해보세요!</h2>
-        <br />
         <br />
         <div className='chatroomlist_list'>
           {chatRoom.map((room) => (

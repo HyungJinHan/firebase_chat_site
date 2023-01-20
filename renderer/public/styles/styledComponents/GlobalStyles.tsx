@@ -64,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100vw;
     font-size: 16px;
     text-align: center;
-    font-family: 'LINESeedKR-Bd';
+    font-family: 'GmarketSansMedium';
   }
 
   ::selection {

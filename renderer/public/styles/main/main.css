@@ -19,6 +19,13 @@
   display: inline-block;
   cursor: pointer;
   line-height: 80px;
+  color: black;
+  transition: 0.3s;
+}
+
+.chatroomlist_link:hover {
+  transition: 0.3s;
+  color: #3DA2FF;
 }
 
 .userlist_div {
@@ -32,13 +39,39 @@
   padding-bottom: 30px;
   padding-left: 20px;
   padding-right: 20px;
+  transition: 0.3s;
+}
+
+.userlist_article:hover {
+  transition: 0.3s;
+  color: #3DA2FF;
 }
 
 .userlist_list {
   display: flex;
   justify-content: space-between;
   font-size: larger;
-  cursor: pointer;
   flex-wrap: wrap;
   text-align: center;
+}
+
+.mainhome_div {
+  margin-top: 220px;
+  width: 100%;
+}
+
+.mainhome_chaticon {
+  font-size: 250px;
+  color: #3DA2FF;
+}
+
+.mainhome_font {
+  font-size: 20px;
+  font-family: 'GmarketSansMedium';
+}
+
+.mainhome_span {
+  color: #3DA2FF;
+  font-weight: bold;
+  text-decoration: underline;
 }

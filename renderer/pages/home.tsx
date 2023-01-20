@@ -4,10 +4,8 @@ import { auth } from '../../firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import Link from 'next/link';
 import SignIn from './sign/signin';
-import { MainPage } from './main/mainpage';
+import MainPage from './main/mainpage';
 import styled from 'styled-components';
-import Header from '../layout/Header';
-import Sidebar from '../layout/Sidebar';
 import UserList from './list/userlist';
 
 const MainDiv = styled.div`
@@ -27,10 +25,7 @@ const SignInDiv = styled.div`
 export default function App() {
   const [user] = useAuthState(auth);
   const router = useRouter();
-
   const url = router.pathname;
-  console.log(url);
-  console.log(router);
 
   if (!user) {
     return (

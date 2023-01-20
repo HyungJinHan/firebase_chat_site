@@ -1,4 +1,5 @@
 import { collection, getDocs } from '@firebase/firestore';
+import { Tooltip } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -18,7 +19,6 @@ export default function UserList() {
 
   const router = useRouter();
   const url = router.pathname;
-  console.log(url);
 
   React.useEffect(() => {
     getDocs(collection(db, 'userInfo'))
@@ -43,33 +43,30 @@ export default function UserList() {
         <div className='userlist_list'>
           {user?.map((data) => (
             <>
-              <Link
-                href={{
-                  pathname: `/privatechat/privatechatroom`,
-                  query: data.uid,
-                }}
-                as={`/privatechat/privatechatroom/${data.uid}`}
-              >
-                <>
-                  <div className='userlist_article'>
-                    {
-                      !data.avatar ?
-                        <Image
-                          src={profileImage}
-                          alt="user avatar"
-                        />
-                        :
-                        <Image
-                          src={data.avatar}
-                          alt="user avatar"
-                        />
-                    }
-                    <p>
-                      {data.name}
-                    </p>
-                  </div>
-                </>
-              </Link>
+              <div className='userlist_article'>
+                <Tooltip
+                  placement="bottom"
+                  title={
+                    `가입일 : ${data.createdAt.toDate().getFullYear()}-${data.createdAt.toDate().getMonth() + 1}-${data.createdAt.toDate().getDate()}`
+                  }
+                >
+                  {
+                    !data.avatar ?
+                      <Image
+                        src={profileImage}
+                        alt="user avatar"
+                      />
+                      :
+                      <Image
+                        src={data.avatar}
+                        alt="user avatar"
+                      />
+                  }
+                  <p>
+                    {data.name}
+                  </p>
+                </Tooltip>
+              </div>
             </>
           ))}
         </div>

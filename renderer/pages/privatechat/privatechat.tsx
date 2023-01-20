@@ -1,4 +1,3 @@
-import { Button } from 'antd';
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -31,11 +30,11 @@ export default function PrivateChat() {
   const user = auth.currentUser;
 
   const router = useRouter();
+  const url = router.pathname;
 
   React.useEffect(() => {
     const unsub = onSnapshot(collection(db, "userInfo"), (snapshot) => {
       setUsers(snapshot.docs.map((doc) => doc.data()));
-      console.log(users);
     });
 
     return unsub;
@@ -68,7 +67,8 @@ export default function PrivateChat() {
     }
   }, [receiverData?.uid]);
 
-  const sendMessage = async () => {
+  const sendMessage = async (event) => {
+    event.preventDefault();
     try {
       if (user && receiverData) {
         await addDoc(
@@ -118,9 +118,9 @@ export default function PrivateChat() {
         <div className='chatroomlist_div'>
           <h2>1대1 채팅을 해보세요!</h2>
           <br />
-          <br />
         </div>
       </PrivateTitleDiv>
+
       <PrivateUserDiv>
         <div className='privatechat_div'>
           <UsersComponent
@@ -131,10 +131,6 @@ export default function PrivateChat() {
           />
         </div>
       </PrivateUserDiv>
-      {/* 
-      <h4 style={{ margin: 2, padding: 10 }}>
-        {receiverData ? receiverData.username : user?.displayName}{" "}
-      </h4> */}
 
       <div className="privatechat-wrapper">
         {allMessages &&
@@ -173,7 +169,7 @@ export default function PrivateChat() {
           })}
       </div>
 
-      <div className="send-message">
+      <form onSubmit={(event) => sendMessage(event)} className="send-message">
         <input
           value={chatMessage}
           onChange={(e) => setChatMessage(e.target.value)}
@@ -183,11 +179,33 @@ export default function PrivateChat() {
           className="form-input__input"
           placeholder="메세지를 입력하세요!"
         />
-        <button onClick={sendMessage}>
-          {/* <IoIosSend /> */}
-          보내기
-        </button>
-      </div>
+        {
+          !chatMessage ?
+            <button disabled>
+              <IoIosSend
+                style={{
+                  fontSize: `30px`,
+                  color: '#3DA2FF',
+                  transition: `0.3s`
+                }}
+              />
+            </button>
+            :
+            <button
+              onClick={sendMessage}
+              style={{
+                cursor: 'pointer'
+              }}
+            >
+              <IoIosSend
+                style={{
+                  fontSize: `30px`,
+                  transition: `0.3s`
+                }}
+              />
+            </button>
+        }
+      </form>
     </>
   );
 }

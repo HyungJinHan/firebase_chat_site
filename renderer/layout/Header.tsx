@@ -27,7 +27,7 @@ export default function Header() {
     title = '유저 리스트';
   } else if (url === '/chatroom/chatroomlist') {
     title = '채팅방 리스트';
-  } else if (url === '/privatechat/privatemain') {
+  } else if (url === '/privatechat/privatechat') {
     title = '1대1 채팅하기';
   } else if (param === '/chatroom/chatroom/study') {
     title = '📚 학업 스트레스 수다방 💯';
@@ -87,7 +87,7 @@ export default function Header() {
             <span className='layout_link'>채팅방 리스트</span>
           </Link>
 
-          <Link href='/privatechat/privatemain'>
+          <Link href='/privatechat/privatechat'>
             <span className='layout_link'>1대1 채팅하기</span>
           </Link>
         </TitleDiv>

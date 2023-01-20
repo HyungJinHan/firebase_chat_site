@@ -22,6 +22,7 @@ const ErrorMsg = styled.p`
   font-weight: bolder;
   font-family: 'GmarketSansMedium';
   padding-top: .625rem;
+  text-decoration: underline;
 `
 
 export default function App() {
@@ -170,7 +171,7 @@ export default function App() {
         로그인하러 가기
       </span>
       <ErrorMsg>
-        <u>{errorMsg}</u>
+        {errorMsg}
       </ErrorMsg>
     </SignUpDiv>
   );

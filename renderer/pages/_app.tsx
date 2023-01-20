@@ -8,7 +8,6 @@ import '../public/styles/main/main.css';
 import '../public/styles/sign/sign.css';
 import '../public/styles/layout/layout.css';
 import Header from '../layout/Header';
-import Sidebar from '../layout/Sidebar';
 import { auth } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -24,7 +23,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         user ?
           <>
             <Header />
-            {/* <Sidebar /> */}
           </>
           :
           null

@@ -21,7 +21,6 @@ export default function CurrentUserList(props: IAppProps) {
       })
       .then(() => {
         setCurrentUser(list);
-        console.log(currentUser);
       })
       .catch((error) => {
         console.log(error)

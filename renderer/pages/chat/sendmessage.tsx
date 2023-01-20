@@ -1,6 +1,8 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import * as React from 'react';
+import { IoIosSend } from 'react-icons/io';
 import { auth, db } from '../../../firebase';
+import Swal from 'sweetalert2'
 
 export default function SendMessage(props) {
   const [message, setMessage] = React.useState("");
@@ -8,7 +10,7 @@ export default function SendMessage(props) {
   const sendMessage = async (event) => {
     event.preventDefault();
     if (message.trim() === "") {
-      alert("Enter valid message");
+      Swal.fire("메세지를 입력해주세요!");
       return;
     }
 
@@ -29,9 +31,6 @@ export default function SendMessage(props) {
 
   return (
     <form onSubmit={(event) => sendMessage(event)} className="send-message">
-      <label htmlFor="messageInput" hidden>
-        Enter Message
-      </label>
       <input
         id="messageInput"
         name="messageInput"
@@ -41,7 +40,32 @@ export default function SendMessage(props) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button type="submit">Send</button>
+      {
+        !message ?
+          <button type="submit" disabled>
+            <IoIosSend
+              style={{
+                fontSize: `30px`,
+                color: '#3DA2FF',
+                transition: `0.3s`
+              }}
+            />
+          </button>
+          :
+          <button
+            type="submit"
+            style={{
+              cursor: 'pointer'
+            }}
+          >
+            <IoIosSend
+              style={{
+                fontSize: `30px`,
+                transition: `0.3s`
+              }}
+            />
+          </button>
+      }
     </form>
   );
 }

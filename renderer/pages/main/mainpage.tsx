@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -6,6 +5,8 @@ import styled from 'styled-components';
 import { auth } from '../../../firebase';
 import ChatRoomList from '../chatroom/chatroomlist';
 import UserList from '../list/userlist';
+import PrivateChat from '../privatechat/privatechat';
+import MainHome from './mainhome';
 
 const MainDiv = styled.div`
   display: flex;
@@ -13,31 +14,15 @@ const MainDiv = styled.div`
   width: 80%;
 `
 
-export function MainPage() {
+export default function MainPage() {
   const [user] = useAuthState(auth);
-  console.log(user);
 
   const router = useRouter();
   const url = router.pathname;
-  console.log(url);
 
   if (url === '/home') {
     return (
-      <MainDiv>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        this is chatting app
-      </MainDiv>
+      <MainHome />
     );
   }
 
@@ -61,13 +46,13 @@ export function MainPage() {
     );
   }
 
-  // if (url === '/privatechat/privatechat') {
-  //   return (
-  //     <div className='layout_mainpage'>
-  //       <MainDiv>
-  //         <PrivateChat />
-  //       </MainDiv>
-  //     </div>
-  //   );
-  // }
+  if (url === '/privatechat/privatechat') {
+    return (
+      <div className='layout_mainpage'>
+        <MainDiv>
+          <PrivateChat />
+        </MainDiv>
+      </div>
+    );
+  }
 }
