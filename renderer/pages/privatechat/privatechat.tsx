@@ -21,7 +21,7 @@ export default function PrivateChat() {
   const [users, setUsers] = React.useState([]);
 
   const [receiverData, setReceiverData] = React.useState(null);
-  const [chatMessage, setChatMessage] = React.useState("");
+  const [chatMessage, setChatMessage] = React.useState<string>("");
 
   const [allMessages, setAllMessages] = React.useState([]);
 
@@ -30,7 +30,8 @@ export default function PrivateChat() {
   const user = auth.currentUser;
 
   const router = useRouter();
-  const url = router.pathname;
+  const param = router.asPath;
+  const url = param.substring(24,);
 
   React.useEffect(() => {
     const unsub = onSnapshot(collection(db, "userInfo"), (snapshot) => {
@@ -168,44 +169,48 @@ export default function PrivateChat() {
             );
           })}
       </div>
-
-      <form onSubmit={(event) => sendMessage(event)} className="send-message">
-        <input
-          value={chatMessage}
-          onChange={(e) => setChatMessage(e.target.value)}
-          id="messageInput"
-          name="messageInput"
-          type="text"
-          className="form-input__input"
-          placeholder="메세지를 입력하세요!"
-        />
-        {
-          !chatMessage ?
-            <button disabled>
-              <IoIosSend
-                style={{
-                  fontSize: `30px`,
-                  color: '#3DA2FF',
-                  transition: `0.3s`
-                }}
-              />
-            </button>
-            :
-            <button
-              onClick={sendMessage}
-              style={{
-                cursor: 'pointer'
-              }}
-            >
-              <IoIosSend
-                style={{
-                  fontSize: `30px`,
-                  transition: `0.3s`
-                }}
-              />
-            </button>
-        }
-      </form>
+      {
+        url === '' ?
+          null
+          :
+          <form onSubmit={(event) => sendMessage(event)} className="send-message">
+            <input
+              value={chatMessage}
+              onChange={(e) => setChatMessage(e.target.value)}
+              id="messageInput"
+              name="messageInput"
+              type="text"
+              className="form-input__input"
+              placeholder="메세지를 입력하세요!"
+            />
+            {
+              !chatMessage ?
+                <button disabled>
+                  <IoIosSend
+                    style={{
+                      fontSize: `30px`,
+                      color: '#3DA2FF',
+                      transition: `0.3s`
+                    }}
+                  />
+                </button>
+                :
+                <button
+                  onClick={sendMessage}
+                  style={{
+                    cursor: 'pointer'
+                  }}
+                >
+                  <IoIosSend
+                    style={{
+                      fontSize: `30px`,
+                      transition: `0.3s`
+                    }}
+                  />
+                </button>
+            }
+          </form>
+      }
     </>
   );
 }

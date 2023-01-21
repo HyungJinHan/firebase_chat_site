@@ -6,7 +6,6 @@ import Link from 'next/link';
 import SignIn from './sign/signin';
 import MainPage from './main/mainpage';
 import styled from 'styled-components';
-import UserList from './list/userlist';
 
 const MainDiv = styled.div`
   display: flex;

@@ -5,7 +5,7 @@ import { auth, db } from '../../../firebase';
 import Swal from 'sweetalert2'
 
 export default function SendMessage(props) {
-  const [message, setMessage] = React.useState("");
+  const [message, setMessage] = React.useState<string>("");
 
   const sendMessage = async (event) => {
     event.preventDefault();
