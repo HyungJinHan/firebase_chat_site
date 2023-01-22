@@ -7,7 +7,6 @@ import SendMessage from './sendmessage';
 export default function ChatBox(props) {
   const [messages, setMessages] = React.useState([]);
   const scroll = React.useRef<HTMLInputElement>();
-  const currentMsgScroll = React.useRef<HTMLInputElement>();
 
   React.useEffect(() => {
     const q = query(
@@ -24,8 +23,6 @@ export default function ChatBox(props) {
       setMessages(messages);
     });
 
-    // currentMsgScroll.current.scrollIntoView({ behavior: "smooth" });
-
     return unsubscribe;
   }, []);
 
@@ -35,9 +32,8 @@ export default function ChatBox(props) {
         {messages?.map((message) => (
           <Message key={message.id} message={message} />
         ))}
+        <span ref={scroll}></span>
       </div>
-      <span ref={currentMsgScroll}></span>
-      <span ref={scroll}></span>
       <SendMessage scroll={scroll} roomId={props.roomId} />
     </main>
   );

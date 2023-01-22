@@ -11,23 +11,6 @@ const RoomListDiv = styled.div`
 `
 
 export default function ChatRoomList() {
-  const [rooms, setRooms] = React.useState([]);
-  let list = [];
-
-  React.useEffect(() => {
-    getDocs(collection(db, 'userChatRoom'))
-      .then((res) => {
-        res.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
-        })
-      })
-      .then(() => {
-        setRooms(list);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, []);
 
   return (
     <RoomListDiv>
@@ -36,18 +19,6 @@ export default function ChatRoomList() {
         <br />
         <div className='chatroomlist_list'>
           {chatRoom.map((room) => (
-            <Link
-              href={{
-                pathname: `/chatroom/chatroom`,
-                query: room.id,
-              }}
-              as={`/chatroom/chatroom/${room.id}`}
-            >
-              <p className='chatroomlist_link'>{room.title}</p>
-            </Link>
-          ))}
-
-          {rooms?.map((room) => (
             <Link
               href={{
                 pathname: `/chatroom/chatroom`,

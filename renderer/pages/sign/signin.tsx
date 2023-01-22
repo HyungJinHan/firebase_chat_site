@@ -21,13 +21,11 @@ const ErrorMsg = styled.p`
   text-decoration: underline;
 `
 
-export interface IAppProps {
-}
 
-export default function SignIn(props: IAppProps) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [errorMsg, setErrorMsg] = React.useState('');
+export default function SignIn() {
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const [errorMsg, setErrorMsg] = React.useState<string>('');
 
   const emailRef = React.useRef<InputRef>();
   const passwordRef = React.useRef<InputRef>();
@@ -68,7 +66,7 @@ export default function SignIn(props: IAppProps) {
 
   const errorCheck = () => {
     if (email === "" || email === undefined) {
-      setErrorMsg('이메일을 입력해주세요');
+      setErrorMsg('이메일을 입력해주세요.');
       emailRef.current.focus();
       return false;
     } else {
