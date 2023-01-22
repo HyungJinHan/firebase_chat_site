@@ -28,13 +28,27 @@
   color: #3DA2FF;
 }
 
+.chatroomlist_delete {
+  margin-left: 20px;
+  color: red;
+  transition: 0.3s;
+  border-radius: 10px;
+  vertical-align: text-bottom;
+}
+
+.chatroomlist_delete:hover {
+  color: white;
+  background-color: #d33;
+  transition: 0.3s;
+}
+
 .userlist_div {
   margin-top: 220px;
   width: 100%;
 }
 
 .userlist_article {
-  width: 30%;
+  width: 33%;
   margin: 0 auto;
   padding-bottom: 30px;
   padding-left: 20px;

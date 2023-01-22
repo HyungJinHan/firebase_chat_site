@@ -13,14 +13,13 @@ import { Input } from 'antd';
 import type { InputRef } from 'antd';
 import Link from 'next/link';
 
-const ErrorMsg = styled.p`
+const ErrorMsg = styled.div`
   color: red;
   font-weight: bolder;
   font-family: 'GmarketSansMedium';
   padding-top: .625rem;
   text-decoration: underline;
 `
-
 
 export default function SignIn() {
   const [email, setEmail] = React.useState<string>('');
@@ -36,18 +35,23 @@ export default function SignIn() {
       .then(() => {
         setErrorMsg('');
       })
-      .then(() => {
-        setDoc(doc(db, "currentUserList", auth.currentUser.uid), {
-          name: auth.currentUser.displayName,
-          avatar: auth.currentUser.photoURL,
-          createdAt: serverTimestamp(),
-          uid: auth.currentUser.uid,
-        });
-      })
+
+      // .then(() => {
+      //   setDoc(doc(db, "currentUserList", auth.currentUser.uid), {
+      //     name: auth.currentUser.displayName,
+      //     avatar: auth.currentUser.photoURL,
+      //     createdAt: serverTimestamp(),
+      //     uid: auth.currentUser.uid,
+      //   });
+      // })
 
       .catch((error) => {
         // eslint-disable-next-line default-case
         switch (error.code) {
+          case 'auth/user-not-found':
+            setErrorMsg('가입된 정보가 없습니다.');
+            emailRef.current.focus();
+            break;
           case 'auth/invalid-email':
             setErrorMsg('잘못된 이메일 주소 형식입니다.');
             emailRef.current.focus();
@@ -125,6 +129,7 @@ export default function SignIn() {
           }
         }
       />
+      <br />
       <button
         className='sign_button'
         onClick={

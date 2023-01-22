@@ -1,4 +1,4 @@
-import { deleteDoc, doc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -16,10 +16,27 @@ const TitleDiv = styled.div`
 
 export default function Header() {
   const [user] = useAuthState(auth);
+  const [rooms, setRooms] = React.useState([]);
+  let list = [];
 
   const router = useRouter();
   const url = router.pathname;
   const param = router.asPath;
+
+  React.useEffect(() => {
+    getDocs(collection(db, 'userChatRoom'))
+      .then((res) => {
+        res.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        })
+      })
+      .then(() => {
+        setRooms(list);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, []);
 
   let title = 'HyungJin Han의 채팅앱';
 

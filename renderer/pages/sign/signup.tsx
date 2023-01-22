@@ -61,14 +61,14 @@ export default function App() {
         });
       })
 
-      .then(() => {
-        setDoc(doc(db, "currentUserList", auth.currentUser.uid), {
-          name: name,
-          avatar: auth.currentUser.photoURL,
-          createdAt: serverTimestamp(),
-          uid: auth.currentUser.uid,
-        });
-      })
+      // .then(() => {
+      //   setDoc(doc(db, "currentUserList", auth.currentUser.uid), {
+      //     name: name,
+      //     avatar: auth.currentUser.photoURL,
+      //     createdAt: serverTimestamp(),
+      //     uid: auth.currentUser.uid,
+      //   });
+      // })
 
       .then(() => {
         router.replace('/home');
@@ -93,6 +93,36 @@ export default function App() {
       })
   }
 
+  const errorCheck = () => {
+    if (name === "" || name === undefined) {
+      setErrorMsg('이메일을 입력해주세요.');
+      nameRef.current.focus();
+      return false;
+    } else {
+      setErrorMsg('');
+      emailRef.current.focus();
+    }
+
+    if (email === "" || email === undefined) {
+      setErrorMsg('이메일을 입력해주세요.');
+      emailRef.current.focus();
+      return false;
+    } else {
+      setErrorMsg('');
+      passwordRef.current.focus();
+    }
+
+    if (password === "" || password === undefined) {
+      setErrorMsg('비밀번호를 입력해주세요.');
+      passwordRef.current.focus();
+      return false;
+    } else {
+      setErrorMsg('');
+    }
+
+    register();
+  }
+
   return (
     <SignUpDiv>
       <h1 className='sign_title'>
@@ -105,7 +135,7 @@ export default function App() {
         onKeyPress={
           (e) => {
             if (e.key === "Enter") {
-              register();
+              errorCheck();
             }
           }
         }
@@ -122,7 +152,7 @@ export default function App() {
         onKeyPress={
           (e) => {
             if (e.key === "Enter") {
-              register();
+              errorCheck();
             }
           }
         }
@@ -139,7 +169,7 @@ export default function App() {
         onKeyPress={
           (e) => {
             if (e.key === "Enter") {
-              register();
+              errorCheck();
             }
           }
         }
@@ -149,11 +179,12 @@ export default function App() {
           }
         }
       />
+      <br />
       <button
         className='sign_button'
         onClick={
           () => {
-            register();
+            errorCheck();
           }
         }
       >
