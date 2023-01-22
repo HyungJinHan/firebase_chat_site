@@ -16,6 +16,9 @@
     ```
     # 3. development mode로 서버 실행 (http://localhost:8888)
     $ npm run dev
+    
+    # or (http://localhost:8888)
+    $ npm start
     ```
 
 <br><br>
