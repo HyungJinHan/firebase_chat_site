@@ -3,17 +3,18 @@
   - Dependencies 설치법
 
     ```
-    # Clone한 프로젝트의 폴더로 이동
+    # 순서에 맞춰서 진행
+    
+    # 1. Clone한 프로젝트의 폴더로 이동
     $ cd firebase_chat_site
 
-    # npm을 통한 패키지 설치
+    # 2. npm을 통한 패키지 설치
     $ npm install # or npm i
-    ```
-
+    
   - 사용
 
     ```
-    # development mode로 서버 실행 (http://localhost:8888)
+    # 3. development mode로 서버 실행 (http://localhost:8888)
     $ npm run dev
     ```
 
