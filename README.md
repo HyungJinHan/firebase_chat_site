@@ -10,6 +10,7 @@
 
     # 2. npm을 통한 패키지 설치
     $ npm install # or npm i
+    ```
     
   - 사용
 
