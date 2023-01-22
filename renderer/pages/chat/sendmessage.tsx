@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 
 export default function SendMessage(props) {
   const [message, setMessage] = React.useState<string>("");
+  const inputRef = React.useRef<HTMLInputElement>();
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -23,15 +24,15 @@ export default function SendMessage(props) {
       createdAt: serverTimestamp(),
       uid,
     });
-
     setMessage("");
-
+    inputRef.current.focus();
     props.scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <form onSubmit={(event) => sendMessage(event)} className="send-message">
       <input
+        ref={inputRef}
         id="messageInput"
         name="messageInput"
         type="text"

@@ -26,6 +26,7 @@ export default function PrivateChat() {
   const [allMessages, setAllMessages] = React.useState([]);
 
   const scroll = React.useRef<HTMLInputElement>();
+  const inputRef = React.useRef<HTMLInputElement>();
 
   const user = auth.currentUser;
 
@@ -110,6 +111,7 @@ export default function PrivateChat() {
       console.log(error);
     }
     setChatMessage("");
+    inputRef.current.focus();
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -175,6 +177,7 @@ export default function PrivateChat() {
           :
           <form onSubmit={(event) => sendMessage(event)} className="send-message">
             <input
+              ref={inputRef}
               value={chatMessage}
               onChange={(e) => setChatMessage(e.target.value)}
               id="messageInput"
