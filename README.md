@@ -3,16 +3,17 @@
   - Dependencies 설치법
 
     ```
+    # Clone한 프로젝트의 폴더로 이동
     $ cd firebase_chat_site
 
-    # using npm
-    $ npm install
+    # npm을 통한 패키지 설치
+    $ npm install # or npm i
     ```
 
   - 사용
 
     ```
-    # development mode
+    # development mode로 서버 실행 (http://localhost:8888)
     $ npm run dev
     ```
 
@@ -49,33 +50,34 @@
 ## 3. Contents
 <div align='center'>
   
-  |Login|
+  |Sign In / Sign Up|
   |---|
-  |![login](https://user-images.githubusercontent.com/104360734/213690281-991112bf-6ec2-4142-81be-0490da5666d4.PNG)|
+  |![login](https://user-images.githubusercontent.com/104360734/213926979-5da42e97-917c-4e5d-9598-17665d0c68bc.PNG)|
+  |![signup](https://user-images.githubusercontent.com/104360734/213926994-ff5e954d-cacc-4d23-be5b-e38a3c2af9ca.PNG)|
   <br>
   
   |Main|
   |---|
-  |![main](https://user-images.githubusercontent.com/104360734/213690560-a2e9b1ef-6cea-460a-bddc-2b15ac14a002.PNG)|
+  |![main](https://user-images.githubusercontent.com/104360734/213927014-003a9747-f280-4541-943b-b611d2486f96.PNG)|
   <br>
   
   |User List|
   |---|
-  |![userlist](https://user-images.githubusercontent.com/104360734/213690576-9dcc31fa-aea1-44d6-b86e-41d9fcfa396c.PNG)|
+  |![userlist](https://user-images.githubusercontent.com/104360734/213927025-6cee5afc-dfe3-4b66-a5ef-37e15706da5a.PNG)|
   <br>
   
-  |Chat Room List|
+  |Chat Room List / Create Chat Room|
   |---|
-  |![chatroom](https://user-images.githubusercontent.com/104360734/213690612-ffde86ce-50aa-4121-9211-2e0bd9256993.PNG)|
+  |![roomlist](https://user-images.githubusercontent.com/104360734/213927040-a4e1f099-af0b-4885-8663-d9cda57d2cef.PNG)|
+  |![multiplechat](https://user-images.githubusercontent.com/104360734/213927056-7c8c649f-7bd4-46f5-b574-97a9fb1914a0.PNG)|
+  |![chatroomcreate](https://user-images.githubusercontent.com/104360734/213927071-57f5052b-13f9-482f-88c9-b7547ab47793.PNG)|
+  |![roomdelete](https://user-images.githubusercontent.com/104360734/213927074-60f1038e-67c2-4083-afb9-4b5300baf072.PNG)|
+  |![roomdeleteconfirm](https://user-images.githubusercontent.com/104360734/213927076-62abac54-22dc-4993-bc91-dff18f5bfb66.PNG)|
   <br>
   
-  |Private Chat List|
+  |Private Chat List / Private Chatting|
   |---|
-  |![private](https://user-images.githubusercontent.com/104360734/213690624-042dcf4c-56bc-44c8-9568-a9246d6970d8.PNG)|
-  <br>
-  
-  |Private Chatting|
-  |---|
-  |![privatechat](https://user-images.githubusercontent.com/104360734/213690647-a40f68a2-b3c1-4558-b34c-38c4e18646d4.PNG)|
+  |![privatechatuser](https://user-images.githubusercontent.com/104360734/213927113-0e2cdd4d-b7f2-409c-8cb9-1f72baf17f12.PNG)|
+  |![privatechat](https://user-images.githubusercontent.com/104360734/213927108-2e162e0a-ece4-4590-b15f-c8ca348dc203.PNG)|
 
 </div>
