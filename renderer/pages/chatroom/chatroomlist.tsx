@@ -16,8 +16,6 @@ export default function ChatRoomList() {
   const [rooms, setRooms] = React.useState([]);
   let list = [];
 
-  console.log('확인');
-
   const getList = () => {
     getDocs(collection(db, 'userChatRoom'))
       .then((res) => {
@@ -78,18 +76,19 @@ export default function ChatRoomList() {
         <div className='chatroomlist_list'>
           {chatRoom.map((room) => (
             <Link
+              key={room.id}
               href={{
                 pathname: `/chatroom/chatroom`,
                 query: room.id,
               }}
               as={`/chatroom/chatroom/${room.id}`}
             >
-              <p className='chatroomlist_link'>{room.title}</p>
+              <p className='chatroomlist_link' key={room.id}>{room.title}</p>
             </Link>
           ))}
 
           {rooms?.map((room) => (
-            <p className='chatroomlist_link'>
+            <p className='chatroomlist_link' key={room.id}>
               <Link
                 href={{
                   pathname: `/chatroom/chatroom`,

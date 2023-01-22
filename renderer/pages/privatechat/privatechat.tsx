@@ -140,6 +140,7 @@ export default function PrivateChat() {
           allMessages.map(({ messages }) => {
             return (
               <div
+                key={messages.message}
                 className={`chat-bubble ${messages.messageUserId === user.uid ? "right" : ""}`}
               >
                 <span ref={scroll}></span>

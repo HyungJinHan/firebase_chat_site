@@ -18,6 +18,7 @@ export default function UsersComponent(props) {
         if (props.currentUserId !== data.uid)
           return (
             <Tooltip
+              key={data.uid}
               placement="bottom"
               title={
                 `${data.name}와 채팅하기`
@@ -30,7 +31,6 @@ export default function UsersComponent(props) {
                 }}
               >
                 <Link
-                  key={data.uid}
                   href={{
                     pathname: `/privatechat/privatechat`,
                     query: data.uid,

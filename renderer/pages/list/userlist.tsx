@@ -42,32 +42,30 @@ export default function UserList() {
         <br />
         <div className='userlist_list'>
           {user?.map((data) => (
-            <>
-              <div className='userlist_article'>
-                <Tooltip
-                  placement="bottom"
-                  title={
-                    `가입일 : ${data.createdAt.toDate().getFullYear()}-${data.createdAt.toDate().getMonth() + 1}-${data.createdAt.toDate().getDate()}`
-                  }
-                >
-                  {
-                    !data.avatar ?
-                      <Image
-                        src={profileImage}
-                        alt="user avatar"
-                      />
-                      :
-                      <Image
-                        src={data.avatar}
-                        alt="user avatar"
-                      />
-                  }
-                  <p>
-                    {data.name}
-                  </p>
-                </Tooltip>
-              </div>
-            </>
+            <div className='userlist_article' key={data.createdAt}>
+              <Tooltip
+                placement="bottom"
+                title={
+                  `가입일 : ${data.createdAt.toDate().getFullYear()}-${data.createdAt.toDate().getMonth() + 1}-${data.createdAt.toDate().getDate()}`
+                }
+              >
+                {
+                  !data.avatar ?
+                    <Image
+                      src={profileImage}
+                      alt="user avatar"
+                    />
+                    :
+                    <Image
+                      src={data.avatar}
+                      alt="user avatar"
+                    />
+                }
+                <p>
+                  {data.name}
+                </p>
+              </Tooltip>
+            </div>
           ))}
         </div>
       </div>
