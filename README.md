@@ -1,12 +1,27 @@
 ## 1. Usage
 
-  - Dependencies 설치법
-    - `npm` 버전 : 9.3.1 (Latest Release)
-    - `Node.js` 버전 : v18.13.0 (LTS)
+  - <b>환경 세팅</b>
+    <br>
 
+      ```
+      # 최신 버전으로 업데이트
+
+      npm install -g npm
+      # npm 버전 : 9.3.1 (Latest Release)
+      ```
+    <br>
+
+      ```
+      # Node.js LTS 버전 설치 링크 
+
+      https://nodejs.org/dist/v18.13.0/node-v18.13.0-x64.msi
+      # Node.js 버전 : v18.13.0 (LTS)
+      ```
     <br>
 
     ```
+    # Dependencies 설치
+
     # 순서에 맞춰서 진행
     
     # 1. Clone한 프로젝트의 폴더로 이동
@@ -15,8 +30,9 @@
     # 2. npm을 통한 패키지 설치
     $ npm install # or npm i
     ```
+    <br>
     
-  - 사용
+  - <b>사용</b>
 
     ```
     # 3. 서버 실행 (http://localhost:8888)
