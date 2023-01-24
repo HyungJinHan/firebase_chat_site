@@ -1,8 +1,8 @@
 ## 1. Usage
 
   - Dependencies 설치법
-    - npm 버전 8.12.1
-    - Node.js 버전 v18.12.1
+    - `npm` 버전 : 9.3.1 (Latest Release)
+    - `Node.js` 버전 : v18.13.0 (LTS)
 
     <br>
 
