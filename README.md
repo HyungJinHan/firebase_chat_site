@@ -1,6 +1,10 @@
 ## 1. Usage
 
   - Dependencies 설치법
+    - npm 버전 8.12.1
+    - Node.js 버전 v18.12.1
+
+    <br>
 
     ```
     # 순서에 맞춰서 진행
@@ -15,11 +19,8 @@
   - 사용
 
     ```
-    # 3. development mode로 서버 실행 (http://localhost:8888)
-    $ npm run dev
-    
-    # or (http://localhost:8888)
-    $ npm start
+    # 3. 서버 실행 (http://localhost:8888)
+    $ npm start # or npm run dev
     ```
 
 <br><br>
