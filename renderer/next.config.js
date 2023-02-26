@@ -11,4 +11,5 @@ module.exports = {
       unoptimized: true,
     },
   },
+  distDir: "build",
 };
