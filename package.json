@@ -16,7 +16,7 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "productName": "Start Electron",
+    "productName": "Firebase Chat",
     "appId": "net.jetalab.ex.startelectron",
     "asar": true,
     "mac": {
@@ -25,7 +25,7 @@
       ]
     },
     "dmg": {
-      "title": "Start Electron"
+      "title": "Firebase Chat"
     },
     "win": {
       "target": [
