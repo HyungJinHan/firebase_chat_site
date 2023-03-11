@@ -12,7 +12,7 @@ const SignUpDiv = styled.div`
   width: 50%;
   text-align: center;
   display: inline-block;
-  padding-top: 50px;
+  padding-top: 100px;
   font-family: 'GmarketSansMedium';
   margin-top: 5rem;
 `
