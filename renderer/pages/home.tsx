@@ -28,9 +28,11 @@ export default function App() {
 
   if (!user) {
     return (
-      <SignInDiv>
+      // <SignInDiv>
+      <div className="singIn_div">
         <SignIn />
-      </SignInDiv>
+      </div>
+      // </SignInDiv>
     );
   } else if (user) {
     return (
