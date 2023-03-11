@@ -1,52 +1,23 @@
 {
   "private": true,
-  "name": "my-nextron-app",
+  "name": "firebase-chat-app",
   "description": "My application description",
   "version": "1.0.0",
   "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
-  "main": "main/background.ts",
+  "main": "app/background.js",
   "scripts": {
     "start": "nextron",
     "dev": "nextron",
     "build": "nextron build",
-    "deploy:osx": "electron-builder --mac",
-    "deploy:win": "npm run deploy:win32 && npm run deploy:win64",
-    "deploy:win32": "electron-builder --win nsis:ia32",
-    "deploy:win64": "electron-builder --win nsis:x64",
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
     "productName": "Firebase Chat",
-    "appId": "net.jetalab.ex.startelectron",
+    "appId": "com.nextron.chat",
     "asar": true,
-    "mac": {
-      "target": [
-        "default"
-      ]
-    },
+    "icon": "./resources/chatCon.png",
     "dmg": {
-      "title": "Firebase Chat"
-    },
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": false,
-      "createDesktopShortcut": true
-    },
-    "directories": {
-      "buildResources": "./resources/installer/",
-      "output": "./dist/",
-      "app": "."
+      "title": "Start Electron"
     }
   },
   "dependencies": {
@@ -71,6 +42,5 @@
     "react-firebase-hooks": "^5.1.1",
     "styled-components": "^5.3.6",
     "typescript": "^4.9.4"
-  },
-  "type": "module"
+  }
 }

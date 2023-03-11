@@ -6,10 +6,8 @@ module.exports = {
 
     return config;
   },
-  experimental: {
-    images: {
-      unoptimized: true,
-    },
+  images: {
+    unoptimized: true,
   },
   distDir: "build",
 };
