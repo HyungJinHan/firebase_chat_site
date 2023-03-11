@@ -70,6 +70,14 @@
   font-family: "GmarketSansMedium";
 }
 
+.singIn_error {
+  color: red;
+  font-weight: bolder;
+  font-family: "GmarketSansMedium";
+  padding-top: 0.625rem;
+  text-decoration: underline;
+}
+
 .singIn_div {
   width: 50%;
   text-align: center;

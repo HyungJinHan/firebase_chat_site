@@ -126,7 +126,7 @@ export default function SignIn() {
         <span className="sign_link">처음이신가요?</span>
       </Link>
       {/* <ErrorMsg> */}
-      <div className="sign_error">{errorMsg}</div>
+      <div className="singIn_error">{errorMsg}</div>
       {/* </ErrorMsg> */}
     </>
   );
