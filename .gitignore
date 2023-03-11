@@ -16,6 +16,7 @@ dist
 
 # production
 /build
+/renderer/build
 
 # misc
 .DS_Store
