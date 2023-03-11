@@ -4,12 +4,50 @@
   "description": "My application description",
   "version": "1.0.0",
   "author": "Yoshihide Shiono <shiono.yoshihide@gmail.com>",
-  "main": "app/background.js",
+  "main": "main/background.ts",
   "scripts": {
     "start": "nextron",
     "dev": "nextron",
     "build": "nextron build",
+    "deploy:osx": "electron-builder --mac",
+    "deploy:win": "npm run deploy:win32 && npm run deploy:win64",
+    "deploy:win32": "electron-builder --win nsis:ia32",
+    "deploy:win64": "electron-builder --win nsis:x64",
     "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "productName": "Start Electron",
+    "appId": "net.jetalab.ex.startelectron",
+    "asar": true,
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "Start Electron"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true
+    },
+    "directories": {
+      "buildResources": "./resources/installer/",
+      "output": "./dist/",
+      "app": "."
+    }
   },
   "dependencies": {
     "@types/styled-components": "^5.1.26",
@@ -33,5 +71,6 @@
     "react-firebase-hooks": "^5.1.1",
     "styled-components": "^5.3.6",
     "typescript": "^4.9.4"
-  }
+  },
+  "type": "module"
 }
