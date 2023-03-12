@@ -17,7 +17,7 @@
     "asar": true,
     "icon": "./resources/chatCon.png",
     "dmg": {
-      "title": "Start Electron"
+      "title": "Firebase Chat"
     }
   },
   "dependencies": {
