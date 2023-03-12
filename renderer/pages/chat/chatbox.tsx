@@ -31,6 +31,7 @@ export default function ChatBox(props) {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
+      scroll.current.scrollIntoView({ behavior: "smooth" });
     });
 
     return unsubscribe;

@@ -23,13 +23,21 @@ export default function SendMessage(props) {
       avatar: photoURL,
       createdAt: serverTimestamp(),
       uid,
-    }).then(props.scroll.current.scrollIntoView({ behavior: "smooth" }));
+    });
     setMessage("");
     inputRef.current.focus();
   };
 
   return (
-    <form onSubmit={(event) => sendMessage(event)} className="send-message">
+    <form
+      onSubmit={
+        (event) => sendMessage(event)
+        //   .then(
+        //   props.scroll.current.scrollIntoView({ behavior: "smooth" })
+        // )
+      }
+      className="send-message"
+    >
       <input
         ref={inputRef}
         id="messageInput"
