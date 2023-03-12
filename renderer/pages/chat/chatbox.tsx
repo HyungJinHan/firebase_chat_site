@@ -29,18 +29,21 @@ export default function ChatBox(props) {
       let messages = [];
       QuerySnapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
-        scroll.current.scrollIntoView({ behavior: "smooth", block: "end" });
+        scroll.current.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
       });
       setMessages(messages);
     });
 
     return unsubscribe;
-  }, [scroll]);
+  }, []);
 
   return (
     <main className="chat-box">
       <div className="messages-wrapper">
-        {messages?.map((message) => (
+        {messages?.map((message, i) => (
           <div
             key={message.id}
             className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}

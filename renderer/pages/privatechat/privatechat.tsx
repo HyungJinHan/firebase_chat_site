@@ -71,6 +71,7 @@ export default function PrivateChat() {
           );
         }
       );
+
       return unsub;
     }
   }, [receiverData?.uid]);
@@ -112,10 +113,6 @@ export default function PrivateChat() {
             timestamp: new Date(),
           }
         );
-        scroll.current.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-        });
       }
     } catch (error) {
       console.log(error);
@@ -146,10 +143,18 @@ export default function PrivateChat() {
 
       <div className="privatechat-wrapper">
         {allMessages &&
-          allMessages.map(({ messages }) => {
+          allMessages.map(({ messages }, i) => {
+            {
+              if (messages.length !== i) {
+                scroll.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "end",
+                });
+              }
+            }
             return (
               <div
-                key={messages.message}
+                key={messages.message.id}
                 className={`chat-bubble ${
                   messages.messageUserId === user.uid ? "right" : ""
                 }`}
