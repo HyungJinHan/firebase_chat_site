@@ -29,9 +29,9 @@ export default function ChatBox(props) {
       let messages = [];
       QuerySnapshot.forEach((doc) => {
         messages.push({ ...doc.data(), id: doc.id });
+        scroll.current.scrollIntoView({ behavior: "smooth", block: "end" });
       });
       setMessages(messages);
-      scroll.current.scrollIntoView({ behavior: "smooth" });
     });
 
     return unsubscribe;
@@ -71,7 +71,7 @@ export default function ChatBox(props) {
           </div>
         ))}
       </div>
-      <span ref={scroll}></span>
+      <p ref={scroll}></p>
       <SendMessage scroll={scroll} roomId={props.roomId} />
     </main>
   );
