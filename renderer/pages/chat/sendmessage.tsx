@@ -23,10 +23,9 @@ export default function SendMessage(props) {
       avatar: photoURL,
       createdAt: serverTimestamp(),
       uid,
-    });
+    }).then(props.scroll.current.scrollIntoView({ behavior: "smooth" }));
     setMessage("");
     inputRef.current.focus();
-    props.scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
