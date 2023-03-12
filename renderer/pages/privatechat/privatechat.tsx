@@ -141,7 +141,7 @@ export default function PrivateChat() {
         </div>
       </PrivateUserDiv>
 
-      <div className="privatechat-wrapper">
+      <div className="privatechat-wrapper" ref={scroll}>
         {allMessages &&
           allMessages.map(({ messages }, i) => {
             {
@@ -225,7 +225,6 @@ export default function PrivateChat() {
           )}
         </form>
       )}
-      <p ref={scroll}></p>
     </>
   );
 }

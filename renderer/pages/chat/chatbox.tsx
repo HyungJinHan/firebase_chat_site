@@ -42,7 +42,7 @@ export default function ChatBox(props) {
 
   return (
     <main className="chat-box">
-      <div className="messages-wrapper">
+      <div className="messages-wrapper" ref={scroll}>
         {messages?.map((message, i) => (
           <div
             key={message.id}

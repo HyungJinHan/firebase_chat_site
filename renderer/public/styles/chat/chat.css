@@ -56,7 +56,7 @@
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 30px 30px 0 30px;
-  background-color: #3DA2FF;
+  background-color: #3da2ff;
   color: white;
 }
 
@@ -109,7 +109,7 @@
   display: flex;
 }
 
-.send-message>input {
+.send-message > input {
   height: 40px;
   padding: 10px 10px;
   border-radius: 5px 0 0 5px;
@@ -120,23 +120,23 @@
   font-size: 1rem;
 }
 
-.send-message>input:placeholder {
+.send-message > input:placeholder {
   color: #ddd;
 }
 
-.send-message> :is(input, button):focus {
+.send-message > :is(input, button):focus {
   outline: none;
   border-bottom: 1px solid #7cc5d9;
 }
 
-.send-message>button {
+.send-message > button {
   width: 70px;
   height: 40px;
   padding: 5px 10px;
   border-radius: 0 5px 5px 0;
   color: white;
-  border: 1px solid #3DA2FF;
-  background-color: #3DA2FF;
+  border: 1px solid #3da2ff;
+  background-color: #3da2ff;
   font-weight: 600;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .privatechat_user:hover {
-  background-color: #3DA2FF;
+  background-color: #3da2ff;
   color: white;
   transition: 0.5s;
 }
