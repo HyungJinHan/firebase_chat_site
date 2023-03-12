@@ -21,11 +21,12 @@
     }
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.2",
     "@types/styled-components": "^5.1.26",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
     "react-icons": "^4.7.1",
-    "sweetalert2": "^11.7.0"
+    "sweetalert2": "^11.7.3"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",

@@ -2,7 +2,7 @@
   text-align: center;
   margin: auto;
   margin-top: 220px;
-  color: #3DA2FF;
+  color: #3da2ff;
   width: 60%;
 }
 
@@ -25,7 +25,7 @@
 
 .chatroomlist_link:hover {
   transition: 0.3s;
-  color: #3DA2FF;
+  color: #3da2ff;
 }
 
 .chatroomlist_delete {
@@ -50,7 +50,8 @@
 .userlist_article {
   width: 33%;
   margin: 0 auto;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
+  padding-bottom: 15px;
   padding-left: 20px;
   padding-right: 20px;
   transition: 0.3s;
@@ -58,7 +59,7 @@
 
 .userlist_article:hover {
   transition: 0.3s;
-  color: #3DA2FF;
+  color: #3da2ff;
 }
 
 .userlist_list {
@@ -69,6 +70,17 @@
   text-align: center;
 }
 
+.userlist_delete {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.userlist_delete:hover {
+  color: red;
+  font-weight: bolder;
+  transition: 0.3s;
+}
+
 .mainhome_div {
   margin-top: 220px;
   width: 100%;
@@ -76,16 +88,16 @@
 
 .mainhome_chaticon {
   font-size: 250px;
-  color: #3DA2FF;
+  color: #3da2ff;
 }
 
 .mainhome_font {
   font-size: 20px;
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
 }
 
 .mainhome_span {
-  color: #3DA2FF;
+  color: #3da2ff;
   font-weight: bold;
   text-decoration: underline;
 }
