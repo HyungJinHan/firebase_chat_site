@@ -35,7 +35,7 @@ export default function ChatBox(props) {
     });
 
     return unsubscribe;
-  }, []);
+  }, [scroll]);
 
   return (
     <main className="chat-box">
