@@ -42,7 +42,7 @@ export default function ChatBox(props) {
 
   return (
     <main className="chat-box">
-      <div className="messages-wrapper" ref={scroll}>
+      <div className="messages-wrapper">
         {messages?.map((message, i) => (
           <div
             key={message.id}
@@ -74,7 +74,12 @@ export default function ChatBox(props) {
           </div>
         ))}
       </div>
-      {/* <p ref={scroll}></p> */}
+      <p
+        ref={scroll}
+        style={{
+          padding: "50px",
+        }}
+      ></p>
       <SendMessage scroll={scroll} roomId={props.roomId} />
     </main>
   );

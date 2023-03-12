@@ -122,7 +122,7 @@ export default function PrivateChat() {
   };
 
   return (
-    <>
+    <div>
       <PrivateTitleDiv>
         <div className="chatroomlist_div">
           <h2>1대1 채팅을 해보세요!</h2>
@@ -141,7 +141,7 @@ export default function PrivateChat() {
         </div>
       </PrivateUserDiv>
 
-      <div className="privatechat-wrapper" ref={scroll}>
+      <div className="privatechat-wrapper">
         {allMessages &&
           allMessages.map(({ messages }, i) => {
             {
@@ -186,6 +186,12 @@ export default function PrivateChat() {
             );
           })}
       </div>
+      <p
+        ref={scroll}
+        style={{
+          paddingBottom: "120px",
+        }}
+      ></p>
       {url === "" ? null : (
         <form onSubmit={(event) => sendMessage(event)} className="send-message">
           <input
@@ -225,6 +231,6 @@ export default function PrivateChat() {
           )}
         </form>
       )}
-    </>
+    </div>
   );
 }
