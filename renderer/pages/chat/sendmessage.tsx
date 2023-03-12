@@ -1,8 +1,8 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import * as React from 'react';
-import { IoIosSend } from 'react-icons/io';
-import { auth, db } from '../../../firebase';
-import Swal from 'sweetalert2'
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import * as React from "react";
+import { IoIosSend } from "react-icons/io";
+import { auth, db } from "../../../firebase";
+import Swal from "sweetalert2";
 
 export default function SendMessage(props) {
   const [message, setMessage] = React.useState<string>("");
@@ -17,7 +17,7 @@ export default function SendMessage(props) {
 
     const { uid, displayName, photoURL } = auth.currentUser;
 
-    await addDoc(collection(db, 'chatRoom', props.roomId, "messages"), {
+    await addDoc(collection(db, "chatRoom", props.roomId, "messages"), {
       text: message,
       name: displayName,
       avatar: photoURL,
@@ -41,32 +41,31 @@ export default function SendMessage(props) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      {
-        !message ?
-          <button type="submit" disabled>
-            <IoIosSend
-              style={{
-                fontSize: `30px`,
-                color: '#3DA2FF',
-                transition: `0.3s`
-              }}
-            />
-          </button>
-          :
-          <button
-            type="submit"
+      {!message ? (
+        <button type="submit" disabled>
+          <IoIosSend
             style={{
-              cursor: 'pointer'
+              fontSize: `30px`,
+              color: "#3DA2FF",
+              transition: `0.3s`,
             }}
-          >
-            <IoIosSend
-              style={{
-                fontSize: `30px`,
-                transition: `0.3s`
-              }}
-            />
-          </button>
-      }
+          />
+        </button>
+      ) : (
+        <button
+          type="submit"
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          <IoIosSend
+            style={{
+              fontSize: `30px`,
+              transition: `0.3s`,
+            }}
+          />
+        </button>
+      )}
     </form>
   );
 }

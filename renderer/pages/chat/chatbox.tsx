@@ -69,8 +69,8 @@ export default function ChatBox(props) {
             </div>
           </div>
         ))}
-        <span ref={scroll}></span>
       </div>
+      <span ref={scroll}></span>
       <SendMessage scroll={scroll} roomId={props.roomId} />
     </main>
   );
