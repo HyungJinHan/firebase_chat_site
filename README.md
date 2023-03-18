@@ -64,6 +64,7 @@ $ npm start # or npm run dev
 # Firebase Chat App
 
 <div align='center'>
+
 <a href='https://github.com/HyungJinHan/firebase_chat_site/releases/tag/exe'>
 <img width='50%' src="./renderer/public/images/firebaseChat.svg">
 </a>
